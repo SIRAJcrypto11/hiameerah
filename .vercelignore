@@ -1,0 +1,35 @@
+# Dependencies
+node_modules
+
+# Testing
+coverage
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Documentation
+*.md
+!README.md
+docs
+TASK-*.md
+SETUP.md
+DATABASE_SETUP.md
+QUICK-START-MIGRATION.md
+QUICKSTART_DATABASE.md
+
+# Scripts
+scripts/run-migration.ts
+scripts/test-db-connection.ts
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# IDE
+.vscode
+.idea
+
+# Misc
+.DS_Store
+*.log
