@@ -1,0 +1,666 @@
+# Implementation Plan: Hiameerah E-Commerce Website
+
+## Overview
+
+This implementation plan breaks down the Hiameerah e-commerce website into discrete, actionable coding tasks. The website will be built using Next.js 14+ with TypeScript, featuring an interactive product catalog, shopping cart, payment integration, and comprehensive admin panel. The implementation follows a mobile-first, performance-optimized approach with focus on user experience and Indonesian cultural aesthetics.
+
+## Tasks
+
+- [x] 1. Initialize project and setup development environment
+  - Create Next.js 14+ project with TypeScript and App Router
+  - Configure Tailwind CSS with custom theme for Hiameerah brand colors
+  - Setup pnpm as package manager
+  - Configure ESLint, Prettier, and Husky for code quality
+  - Setup project structure following atomic design principles
+  - _Requirements: 28.1, 28.2, 28.3, 28.4, 28.5, 28.6, 28.7, 28.8_
+
+- [ ] 2. Setup database and ORM
+  - [x] 2.1 Configure PostgreSQL database connection
+    - Setup PostgreSQL database instance
+    - Configure environment variables for database connection
+    - _Requirements: Design - Database Schema_
+  - [x] 2.2 Implement Prisma schema
+    - Create complete Prisma schema with all models (Product, User, Order, Cart, etc.)
+    - Define relationships and indexes as specified in design
+    - Configure Prisma client
+    - _Requirements: Design - Data Models_
+  - [x] 2.3 Create database migrations
+    - Generate initial migration from Prisma schema
+    - Run migrations to create database tables
+    - _Requirements: Design - Data Models_
+  - [ ]\* 2.4 Write unit tests for database models
+    - Test model validations and constraints
+    - Test relationships between models
+    - _Requirements: Design - Data Validation Rules_
+
+- [ ] 3. Implement authentication system
+  - [~] 3.1 Create user authentication API routes
+    - Implement registration endpoint with password hashing
+    - Implement login endpoint with JWT token generation
+    - Implement logout endpoint
+    - _Requirements: 25.1_
+  - [~] 3.2 Create authentication middleware
+    - Implement JWT verification middleware
+    - Implement role-based access control (CUSTOMER, ADMIN)
+    - _Requirements: 25.1_
+  - [ ]\* 3.3 Write unit tests for authentication
+    - Test registration validation
+    - Test login flow
+    - Test JWT token generation and verification
+    - _Requirements: 25.1_
+
+- [ ] 4. Build core UI components (Atoms)
+  - [~] 4.1 Create Button component
+    - Implement variants (primary, secondary, outline, ghost)
+    - Add loading and disabled states
+    - Implement hover and click animations
+    - _Requirements: 29.1, 29.2_
+  - [~] 4.2 Create Input component
+    - Implement text, email, password, number types
+    - Add validation states and error messages
+    - Ensure accessibility with labels and ARIA attributes
+    - _Requirements: 18.5_
+  - [~] 4.3 Create Image component
+    - Wrap Next.js Image with custom styling
+    - Implement progressive loading with blur placeholder
+    - Add error fallback
+    - _Requirements: 16.3, 30.6, 30.7_
+  - [~] 4.4 Create Badge component
+    - Implement variants (new, out-of-stock, sale)
+    - Style according to brand aesthetic
+    - _Requirements: 2.7_
+  - [~] 4.5 Create Typography components
+    - Create Heading component (h1-h6)
+    - Create Text component with size variants
+    - Ensure responsive font sizes
+    - _Requirements: 15.4, 28.3_
+
+- [ ] 5. Build molecule components
+  - [~] 5.1 Create ProductCard component
+    - Display product image, name, and price
+    - Implement image hover effect (swap to secondary image)
+    - Add Quick View button overlay on hover
+    - Add wishlist heart icon toggle
+    - Display out-of-stock badge when applicable
+    - Preload secondary images
+    - Support touch devices (tap and hold)
+    - _Requirements: 2.6, 2.7, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7_
+  - [~] 5.2 Create SearchBar component
+    - Implement search input with debouncing (300ms)
+    - Add clear button
+    - Style for mobile and desktop
+    - _Requirements: 12.1, 12.2_
+  - [~] 5.3 Create FilterOption component
+    - Implement checkbox filter option
+    - Implement price range slider
+    - Add active state styling
+    - _Requirements: 5.1, 5.2_
+  - [~] 5.4 Create CartItem component
+    - Display product image, name, size, quantity, price
+    - Implement quantity controls (increment/decrement)
+    - Add remove button
+    - Calculate and display subtotal
+    - _Requirements: 10.5, 10.7, 10.8_
+  - [~] 5.5 Create Breadcrumb component
+    - Display navigation path
+    - Implement clickable links
+    - Style according to brand aesthetic
+    - _Requirements: 13.6_
+
+- [ ] 6. Implement state management
+  - [~] 6.1 Setup Zustand store for shopping cart
+    - Create cart store with add, remove, update, clear actions
+    - Implement total and item count calculations
+    - Add localStorage persistence
+    - _Requirements: 10.1, 10.2, 10.7, 10.8, 10.9_
+  - [~] 6.2 Setup Zustand store for wishlist
+    - Create wishlist store with add and remove actions
+    - Add localStorage persistence
+    - _Requirements: 11.1, 11.6, 11.7_
+  - [~] 6.3 Setup React Query for server state
+    - Configure React Query client
+    - Setup query and mutation defaults
+    - Implement error handling
+    - _Requirements: Design - State Management_
+
+- [ ] 7. Build HeroSlideshow component
+  - [~] 7.1 Implement slideshow structure
+    - Create slide container with image display
+    - Add caption and CTA button overlay
+    - Implement responsive images (desktop/mobile)
+    - _Requirements: 1.1, 1.5_
+  - [~] 7.2 Implement slideshow navigation
+    - Add previous/next arrow buttons
+    - Add pagination dots
+    - Implement click handlers for navigation
+    - _Requirements: 1.3, 1.4_
+  - [~] 7.3 Implement auto-play functionality
+    - Add automatic transition every 5 seconds
+    - Implement smooth fade/slide animation (300-500ms)
+    - Pause on hover, resume after 1 second
+    - _Requirements: 1.2, 1.6, 1.7, 1.8_
+  - [ ]\* 7.4 Write unit tests for HeroSlideshow
+    - Test auto-play timer
+    - Test navigation controls
+    - Test hover pause/resume
+    - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.7, 1.8_
+
+- [~] 8. Checkpoint - Verify core components
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [ ] 9. Build ProductGrid component
+  - [~] 9.1 Implement responsive grid layout
+    - Create CSS Grid with responsive columns (1/2/3/4 based on breakpoints)
+    - Implement smooth layout transitions (200ms)
+    - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5_
+  - [~] 9.2 Implement lazy loading with infinite scroll
+    - Setup Intersection Observer for scroll detection
+    - Load initial 20 products
+    - Load next 20 products when scrolling within 500px of bottom
+    - Display loading indicator
+    - Show "End of catalog" message when complete
+    - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6_
+  - [~] 9.3 Implement skeleton loading states
+    - Create skeleton card component
+    - Display skeletons while loading
+    - _Requirements: 29.7_
+
+- [ ] 10. Implement product filtering system
+  - [~] 10.1 Create FilterSidebar component
+    - Display filter options for category, color, price, collection
+    - Implement multi-select checkboxes
+    - Add price range slider
+    - Display product count for current filters
+    - Show active filters as removable tags
+    - Add "Clear Filters" button
+    - _Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.7_
+  - [~] 10.2 Implement filter logic and API integration
+    - Create API route for filtered product queries
+    - Update ProductGrid when filters change (500ms)
+    - Persist filters in URL query parameters
+    - Display "No products found" message when no matches
+    - _Requirements: 5.2, 5.3, 5.6, 5.8_
+  - [~] 10.3 Make FilterSidebar responsive
+    - Convert to mobile drawer on screens <768px
+    - Add open/close animations
+    - _Requirements: 15.2, 15.3_
+
+- [ ] 11. Implement product sorting
+  - [~] 11.1 Create sorting dropdown component
+    - Display sorting options (Newest, Price: Low to High, Price: High to Low, Best Selling, Name: A-Z)
+    - Show currently active sort option
+    - _Requirements: 6.1, 6.4_
+  - [~] 11.2 Implement sorting logic
+    - Update product query with sort parameter
+    - Reorder products within 300ms
+    - Maintain sort when filters applied
+    - Default to "Newest" on page load
+    - _Requirements: 6.2, 6.3, 6.5_
+
+- [ ] 12. Build QuickViewModal component
+  - [~] 12.1 Create modal structure
+    - Implement modal overlay with backdrop
+    - Create modal content container
+    - Add close button and ESC key handler
+    - Implement focus trap for accessibility
+    - Prevent body scroll when open
+    - _Requirements: 4.3, 4.5_
+  - [~] 12.2 Implement modal content
+    - Display product name, price, description
+    - Show primary image with thumbnail gallery (up to 4 images)
+    - Add size and color selection
+    - Add quantity selector
+    - Add "Add to Cart" button
+    - Add link to full product page
+    - _Requirements: 4.2, 4.4, 4.6, 4.7_
+  - [~] 12.3 Implement modal animations
+    - Add open/close animations (300ms)
+    - Implement thumbnail click to change main image (150ms)
+    - _Requirements: 4.1, 4.7_
+
+- [ ] 13. Implement search functionality
+  - [~] 13.1 Create search API endpoint
+    - Implement full-text search across product names, descriptions, categories, collections
+    - Return up to 8 suggestions with thumbnails
+    - Highlight matching text in results
+    - _Requirements: 12.1, 12.6, 12.7_
+  - [~] 13.2 Implement autocomplete UI
+    - Display suggestions dropdown after 2 characters
+    - Update suggestions within 300ms of last keystroke
+    - Show product thumbnail, name, and price
+    - Handle click on suggestion (navigate to product page)
+    - Handle Enter key (navigate to search results page)
+    - Display "No results found" with popular suggestions
+    - _Requirements: 12.1, 12.2, 12.3, 12.4, 12.5, 12.8_
+
+- [ ] 14. Build Header and navigation
+  - [~] 14.1 Create Header component
+    - Add logo and brand name
+    - Add navigation menu (categories)
+    - Add search bar
+    - Add cart icon with item count badge
+    - Add wishlist icon
+    - Add user account menu
+    - _Requirements: 13.1, 10.3_
+  - [~] 14.2 Implement responsive navigation
+    - Create hamburger menu for screens <768px
+    - Implement slide-in mobile menu with animation (200ms)
+    - Ensure touch targets are minimum 44x44px
+    - _Requirements: 15.2, 15.3, 15.5_
+  - [~] 14.3 Implement category navigation
+    - Display categories (Hijab, Busana, Aksesoris)
+    - Navigate to category pages on click
+    - _Requirements: 13.1, 13.2_
+
+- [~] 15. Checkpoint - Test navigation and filtering
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [ ] 16. Build ShoppingCart sidebar
+  - [~] 16.1 Create cart sidebar component
+    - Implement slide-in from right animation (200ms)
+    - Display cart items list
+    - Show subtotal, shipping estimate, and total
+    - Add "Proceed to Checkout" button
+    - _Requirements: 10.4, 10.6, 10.10_
+  - [~] 16.2 Integrate cart state management
+    - Connect to Zustand cart store
+    - Implement optimistic UI updates
+    - Update totals within 100ms on quantity change
+    - _Requirements: 10.7, 10.8_
+  - [~] 16.3 Implement add to cart notification
+    - Display success notification for 3 seconds
+    - Animate product image flying to cart icon
+    - _Requirements: 10.2, 29.3_
+
+- [ ] 17. Build Wishlist functionality
+  - [~] 17.1 Implement wishlist toggle
+    - Add heart icon to product cards
+    - Toggle between outline and filled states
+    - Connect to Zustand wishlist store
+    - Display success notification for 3 seconds
+    - _Requirements: 11.1, 11.2, 11.3_
+  - [~] 17.2 Create Wishlist page
+    - Display wishlist items in grid layout
+    - Show "Add to Cart" button for each item
+    - Add remove button
+    - _Requirements: 11.4, 11.5, 11.6, 11.8_
+
+- [ ] 18. Build Product Detail Page
+  - [~] 18.1 Create product detail layout
+    - Display product name, price, description
+    - Show material and care instructions
+    - Add size guide link
+    - Add quantity selector
+    - Add "Add to Cart" and "Add to Wishlist" buttons
+    - _Requirements: 8.1, 8.5, 8.6, 8.7_
+  - [~] 18.2 Implement ImageGallery component
+    - Display main product image
+    - Show thumbnail gallery (minimum 4 images)
+    - Implement thumbnail click to change main image (150ms)
+    - Add click on main image to open zoom modal
+    - _Requirements: 8.2, 8.3, 8.4_
+  - [~] 18.3 Implement image zoom modal
+    - Open full-resolution image in modal
+    - Implement hover magnification (2x zoom)
+    - Add navigation arrows for image switching
+    - Support pinch-to-zoom on touch devices (1x-4x)
+    - _Requirements: 9.1, 9.2, 9.3, 9.4, 9.5_
+  - [~] 18.4 Add related products section
+    - Query and display minimum 4 similar products
+    - Use ProductCard component
+    - _Requirements: 8.8_
+
+- [ ] 19. Implement recently viewed products
+  - [~] 19.1 Create recently viewed tracking
+    - Add product to recently viewed list on detail page view
+    - Store in localStorage
+    - Maintain chronological order (max 8 products)
+    - Prevent duplicates (move to top if already viewed)
+    - _Requirements: 14.1, 14.4, 14.5, 14.6_
+  - [~] 19.2 Create recently viewed section component
+    - Display on homepage and product pages
+    - Show up to 8 products in horizontal scroll
+    - _Requirements: 14.2, 14.3_
+
+- [ ] 20. Build category and collection pages
+  - [~] 20.1 Create category page
+    - Display category name and description
+    - Show breadcrumb navigation
+    - Render ProductGrid with category filter
+    - Apply same filtering, sorting, and lazy loading
+    - _Requirements: 13.2, 13.6, 13.7_
+  - [~] 20.2 Create collection page
+    - Display collection hero image with title and description
+    - Show breadcrumb navigation
+    - Render ProductGrid with collection filter
+    - Apply same filtering, sorting, and lazy loading
+    - _Requirements: 13.3, 13.4, 13.5, 13.6, 13.7_
+
+- [ ] 21. Implement checkout flow
+  - [~] 21.1 Create checkout page layout
+    - Display order summary with items
+    - Show subtotal, shipping, and total
+    - _Requirements: 23.3_
+  - [~] 21.2 Implement shipping address form
+    - Create form with fields (name, phone, street, city, province, postal code)
+    - Implement validation with React Hook Form and Zod
+    - Allow selecting saved addresses for logged-in users
+    - _Requirements: 23.4_
+  - [~] 21.3 Implement shipping method selection
+    - Display available shipping methods with costs
+    - Update total when shipping method changes
+    - _Requirements: 23.4_
+  - [ ]\* 21.4 Write unit tests for checkout validation
+    - Test address form validation
+    - Test shipping cost calculation
+    - _Requirements: 23.4_
+
+- [ ] 22. Integrate Midtrans payment gateway
+  - [~] 22.1 Setup Midtrans SDK
+    - Install Midtrans Node.js SDK
+    - Configure API keys in environment variables
+    - _Requirements: 23.1_
+  - [~] 22.2 Create order API endpoint
+    - Implement POST /api/orders endpoint
+    - Create order record in database
+    - Generate Midtrans payment transaction
+    - Return payment URL
+    - _Requirements: 23.5, 23.6_
+  - [~] 22.3 Implement payment callback handler
+    - Create webhook endpoint for Midtrans notifications
+    - Update order payment status
+    - Send order confirmation email
+    - _Requirements: 23.6, 23.8_
+  - [~] 22.4 Create order confirmation page
+    - Display order number and details
+    - Show payment status
+    - Display order items and total
+    - _Requirements: 23.7_
+
+- [~] 23. Checkpoint - Test checkout and payment flow
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [ ] 24. Build user order management
+  - [~] 24.1 Create My Orders page
+    - Display list of user orders
+    - Show order number, date, total, payment status, shipping status
+    - _Requirements: 24.1, 24.2_
+  - [~] 24.2 Create order detail page
+    - Display complete order information
+    - Show items, quantities, prices
+    - Display shipping address
+    - Show tracking number with courier link (if available)
+    - Add download invoice button
+    - _Requirements: 24.3, 24.6, 24.7_
+  - [~] 24.3 Implement order status updates
+    - Create API endpoint for order status changes
+    - Send email notifications on status change
+    - Update UI in real-time
+    - _Requirements: 24.4, 24.5_
+
+- [ ] 25. Implement email notifications
+  - [~] 25.1 Setup email service (SendGrid or Resend)
+    - Install email service SDK
+    - Configure API keys
+    - _Requirements: 23.8, 24.5_
+  - [~] 25.2 Create email templates
+    - Order confirmation template
+    - Order status update template
+    - Welcome email template
+    - _Requirements: 23.8, 24.5_
+  - [~] 25.3 Implement email sending functions
+    - Create utility functions for each email type
+    - Handle errors gracefully
+    - _Requirements: 23.8, 24.5_
+
+- [ ] 26. Build admin authentication
+  - [~] 26.1 Create admin login page
+    - Implement login form with username and password
+    - Add form validation
+    - _Requirements: 25.1_
+  - [~] 26.2 Implement admin authentication middleware
+    - Verify admin role on protected routes
+    - Redirect to login if not authenticated
+    - _Requirements: 25.1_
+
+- [ ] 27. Build admin product management
+  - [~] 27.1 Create admin product list page
+    - Display all products in table format
+    - Add search and filter capabilities
+    - Show product name, price, category, stock status
+    - _Requirements: 25.2_
+  - [~] 27.2 Create add/edit product form
+    - Implement form with all required fields
+    - Add image upload functionality (up to 10 images)
+    - Implement image reordering to set primary image
+    - Add validation for required fields
+    - _Requirements: 25.3, 25.4, 25.5, 25.6, 25.7_
+  - [~] 27.3 Implement product API endpoints
+    - Create POST /api/admin/products (create)
+    - Create PUT /api/admin/products/[id] (update)
+    - Create DELETE /api/admin/products/[id] (soft delete)
+    - _Requirements: 25.8, 25.9, 25.10_
+  - [~] 27.4 Setup image upload to S3/R2
+    - Configure AWS S3 or Cloudflare R2
+    - Implement image upload API endpoint
+    - Optimize images before upload
+    - _Requirements: 25.5, 16.3_
+
+- [ ] 28. Build admin order management
+  - [~] 28.1 Create admin orders list page
+    - Display all orders in table format
+    - Add filters for status, date range, payment method
+    - Show order number, customer, total, status
+    - _Requirements: 26.1_
+  - [~] 28.2 Create order detail page for admin
+    - Display complete order information
+    - Show customer details and shipping address
+    - _Requirements: 26.2_
+  - [~] 28.3 Implement order status management
+    - Add status update dropdown
+    - Add tracking number input field
+    - Send notification email on status update
+    - _Requirements: 26.3, 26.4, 26.5_
+  - [~] 28.4 Create order statistics dashboard
+    - Display total orders, revenue, pending orders
+    - Show charts and graphs
+    - _Requirements: 26.6_
+  - [~] 28.5 Implement order export
+    - Add export to CSV functionality
+    - Include all order details
+    - _Requirements: 26.7_
+
+- [ ] 29. Build admin content management
+  - [~] 29.1 Create hero banner management
+    - Display list of banners
+    - Add create/edit banner form
+    - Implement image upload
+    - Add reordering functionality
+    - _Requirements: 27.1, 27.2, 27.3_
+  - [~] 29.2 Create collection management
+    - Add create/edit collection form
+    - Implement hero image upload
+    - Add product assignment interface
+    - _Requirements: 27.4, 27.5_
+  - [~] 29.3 Create blog post editor
+    - Implement rich text editor
+    - Add featured image upload
+    - Add category selection
+    - Implement publish scheduling
+    - _Requirements: 27.6, 27.7_
+  - [~] 29.4 Create static page editor
+    - Add editor for About page
+    - Add editor for Fabric Guide page
+    - _Requirements: 27.8_
+
+- [~] 30. Checkpoint - Test admin functionality
+  - Ensure all tests pass, ask the user if questions arise.
+
+- [ ] 31. Build content pages
+  - [~] 31.1 Create About page
+    - Display brand story and heritage
+    - Show founding date and inspiration
+    - Highlight brand values
+    - Add high-quality images
+    - Include rafflesia flower inspiration section
+    - Add contact information and social media links
+    - _Requirements: 19.1, 19.2, 19.3, 19.4, 19.5, 19.6_
+  - [~] 31.2 Create Fabric Guide page
+    - Display fabric types with characteristics
+    - Show care instructions for each fabric
+    - Add fabric comparison table
+    - Include images/videos of fabric drape
+    - Link to products made from each fabric
+    - _Requirements: 20.1, 20.2, 20.3, 20.4, 20.5, 20.6_
+  - [~] 31.3 Create Lookbook section
+    - Display curated outfit combinations
+    - Show lifestyle photography
+    - Implement product tagging on images
+    - Add click handler to show product info
+    - Organize by themes/occasions
+    - Add styling tips and descriptions
+    - _Requirements: 21.1, 21.2, 21.3, 21.4, 21.5, 21.6_
+  - [~] 31.4 Create Blog section
+    - Display blog posts in grid layout
+    - Show featured image, title, excerpt, date
+    - Implement blog post detail page
+    - Add blog categories
+    - Show related articles
+    - Implement blog search
+    - Add social media sharing
+    - _Requirements: 22.1, 22.2, 22.3, 22.4, 22.5, 22.6, 22.7_
+
+- [ ] 32. Implement performance optimizations
+  - [~] 32.1 Optimize images
+    - Implement responsive images with srcset
+    - Convert images to WebP with JPEG fallback
+    - Implement lazy loading for images
+    - Add blur placeholders
+    - _Requirements: 16.3, 30.6, 30.7_
+  - [~] 32.2 Implement code splitting
+    - Split code by routes
+    - Lazy load heavy components
+    - _Requirements: 16.4_
+  - [~] 32.3 Setup CDN for static assets
+    - Configure CloudFront or Cloudflare CDN
+    - Setup cache headers (30 days for static assets)
+    - _Requirements: 16.6, 16.7_
+  - [~] 32.4 Minify and optimize bundles
+    - Minify CSS and JavaScript
+    - Remove unused code
+    - Optimize bundle size
+    - _Requirements: 16.5_
+  - [ ]\* 32.5 Run performance tests
+    - Test First Contentful Paint (<1.5s on 4G)
+    - Test Largest Contentful Paint (<2.5s on 4G)
+    - Achieve Lighthouse score ≥85
+    - _Requirements: 16.1, 16.2, 16.8_
+
+- [ ] 33. Implement SEO optimizations
+  - [~] 33.1 Add meta tags to all pages
+    - Generate unique title and description per page
+    - Add Open Graph tags for social sharing
+    - _Requirements: 17.1, 17.6_
+  - [~] 33.2 Implement structured data
+    - Add Schema.org Product markup
+    - Add Organization markup
+    - Add BreadcrumbList markup
+    - _Requirements: 17.2_
+  - [~] 33.3 Generate sitemap and robots.txt
+    - Create dynamic XML sitemap
+    - Auto-update when products added
+    - Create robots.txt file
+    - _Requirements: 17.3, 17.8_
+  - [~] 33.4 Implement SEO-friendly URLs
+    - Use product names in kebab-case
+    - Implement canonical URLs
+    - _Requirements: 17.4, 17.5_
+  - [~] 33.5 Add alt text to all images
+    - Ensure all product images have descriptive alt text
+    - Mark decorative images appropriately
+    - _Requirements: 17.7_
+
+- [ ] 34. Implement accessibility features
+  - [~] 34.1 Ensure semantic HTML
+    - Use proper HTML5 elements
+    - Implement correct heading hierarchy
+    - _Requirements: 18.1, 18.8_
+  - [~] 34.2 Implement keyboard navigation
+    - Ensure all interactive elements are keyboard accessible
+    - Add visible focus indicators
+    - Implement skip navigation link
+    - _Requirements: 18.2, 18.6_
+  - [~] 34.3 Add ARIA labels
+    - Add ARIA labels to icon-only buttons
+    - Add ARIA labels to complex widgets
+    - Ensure form inputs have associated labels
+    - _Requirements: 18.3, 18.5_
+  - [~] 34.4 Ensure color contrast
+    - Verify minimum 4.5:1 contrast for normal text
+    - Verify minimum 3:1 contrast for large text
+    - _Requirements: 18.4_
+  - [~] 34.5 Test with screen readers
+    - Ensure proper screen reader navigation
+    - Test with NVDA or JAWS
+    - _Requirements: 18.8_
+
+- [ ] 35. Implement animations and micro-interactions
+  - [~] 35.1 Add button interactions
+    - Implement hover color transitions (200ms)
+    - Add click scale animation (0.98x)
+    - _Requirements: 29.1, 29.2_
+  - [~] 35.2 Add scroll animations
+    - Implement parallax effect on hero section (0.5 speed ratio)
+    - Add fade-in and slide-up animations for elements entering viewport (400ms)
+    - Implement smooth scroll for anchor links
+    - _Requirements: 29.4, 29.5, 29.6_
+  - [~] 35.3 Optimize animation performance
+    - Ensure animations run at 60fps
+    - Use CSS transforms for better performance
+    - _Requirements: 29.8_
+
+- [ ] 36. Setup monitoring and analytics
+  - [~] 36.1 Integrate Google Analytics
+    - Add GA4 tracking code
+    - Track page views and events
+    - _Requirements: Design - External Services_
+  - [~] 36.2 Setup error tracking with Sentry
+    - Install and configure Sentry
+    - Track frontend and backend errors
+    - Monitor performance metrics
+    - _Requirements: Design - Monitoring_
+  - [~] 36.3 Setup Vercel Analytics
+    - Enable Vercel Analytics
+    - Monitor Web Vitals
+    - _Requirements: Design - Monitoring_
+
+- [ ] 37. Final testing and deployment
+  - [ ]\* 37.1 Run end-to-end tests
+    - Test complete user flows (browse, add to cart, checkout)
+    - Test admin flows (product management, order management)
+    - Test on multiple browsers (Chrome, Safari, Firefox)
+    - Test on mobile devices (iOS Safari, Android Chrome)
+    - _Requirements: 15.8_
+  - [~] 37.2 Setup production environment
+    - Configure production database
+    - Setup environment variables
+    - Configure CDN
+    - Setup SSL certificate
+    - _Requirements: Design - Hosting_
+  - [~] 37.3 Deploy to production
+    - Deploy to Vercel or AWS
+    - Verify all features work in production
+    - Monitor for errors
+    - _Requirements: Design - Hosting_
+
+- [~] 38. Final checkpoint - Production verification
+  - Ensure all tests pass, ask the user if questions arise.
+
+## Notes
+
+- Tasks marked with `*` are optional and can be skipped for faster MVP delivery
+- Each task references specific requirements for traceability
+- Checkpoints ensure incremental validation and user feedback
+- The implementation follows a bottom-up approach: core components → features → pages → optimization
+- Testing tasks are included as optional sub-tasks to maintain code quality
+- All tasks are designed to be executed by a coding agent with access to the requirements and design documents

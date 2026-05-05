@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: hiameerah-db
+    restart: always
+    environment:
+      POSTGRES_USER: hiameerah_user
+      POSTGRES_PASSWORD: hiameerah_password
+      POSTGRES_DB: hiameerah
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U hiameerah_user -d hiameerah']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Optional: Redis for caching (can be enabled later)
+  # redis:
+  #   image: redis:7-alpine
+  #   container_name: hiameerah-redis
+  #   restart: always
+  #   ports:
+  #     - '6379:6379'
+  #   volumes:
+  #     - redis_data:/data
+  #   healthcheck:
+  #     test: ['CMD', 'redis-cli', 'ping']
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 5
+
+volumes:
+  postgres_data:
+    driver: local
+  # redis_data:
+  #   driver: local
