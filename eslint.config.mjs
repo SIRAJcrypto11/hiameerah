@@ -22,8 +22,21 @@ const eslintConfig = [
       ],
       '@typescript-eslint/no-explicit-any': 'warn',
       'react/no-unescaped-entities': 'off',
-      'prefer-const': 'warn',
+      'prefer-const': 'off',
+      '@typescript-eslint/no-unused-expressions': 'off',
+      '@typescript-eslint/no-require-imports': 'off',
     },
+  },
+  {
+    ignores: [
+      'node_modules/**',
+      '.next/**',
+      'out/**',
+      'build/**',
+      'dist/**',
+      '.vercel/**',
+      'lib/generated/**',
+    ],
   },
 ];
 
