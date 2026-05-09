@@ -14,7 +14,7 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
   - Setup project structure following atomic design principles
   - _Requirements: 28.1, 28.2, 28.3, 28.4, 28.5, 28.6, 28.7, 28.8_
 
-- [ ] 2. Setup database and ORM
+- [x] 2. Setup database and ORM
   - [x] 2.1 Configure PostgreSQL database connection
     - Setup PostgreSQL database instance
     - Configure environment variables for database connection
@@ -28,55 +28,55 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
     - Generate initial migration from Prisma schema
     - Run migrations to create database tables
     - _Requirements: Design - Data Models_
-  - [ ]\* 2.4 Write unit tests for database models
+  - [x] 2.4 Write unit tests for database models
     - Test model validations and constraints
     - Test relationships between models
     - _Requirements: Design - Data Validation Rules_
 
-- [ ] 3. Implement authentication system
-  - [~] 3.1 Create user authentication API routes
+- [x] 3. Implement authentication system
+  - [x] 3.1 Create user authentication API routes
     - Implement registration endpoint with password hashing
     - Implement login endpoint with JWT token generation
     - Implement logout endpoint
     - _Requirements: 25.1_
-  - [~] 3.2 Create authentication middleware
+  - [x] 3.2 Create authentication middleware
     - Implement JWT verification middleware
     - Implement role-based access control (CUSTOMER, ADMIN)
     - _Requirements: 25.1_
-  - [ ]\* 3.3 Write unit tests for authentication
+  - [x] 3.3 Write unit tests for authentication
     - Test registration validation
     - Test login flow
     - Test JWT token generation and verification
     - _Requirements: 25.1_
 
-- [ ] 4. Build core UI components (Atoms)
-  - [~] 4.1 Create Button component
+- [x] 4. Build core UI components (Atoms)
+  - [x] 4.1 Create Button component
     - Implement variants (primary, secondary, outline, ghost)
     - Add loading and disabled states
     - Implement hover and click animations
     - _Requirements: 29.1, 29.2_
-  - [~] 4.2 Create Input component
+  - [x] 4.2 Create Input component
     - Implement text, email, password, number types
     - Add validation states and error messages
     - Ensure accessibility with labels and ARIA attributes
     - _Requirements: 18.5_
-  - [~] 4.3 Create Image component
+  - [-] 4.3 Create Image component
     - Wrap Next.js Image with custom styling
     - Implement progressive loading with blur placeholder
     - Add error fallback
     - _Requirements: 16.3, 30.6, 30.7_
-  - [~] 4.4 Create Badge component
+  - [x] 4.4 Create Badge component
     - Implement variants (new, out-of-stock, sale)
     - Style according to brand aesthetic
     - _Requirements: 2.7_
-  - [~] 4.5 Create Typography components
+  - [x] 4.5 Create Typography components
     - Create Heading component (h1-h6)
     - Create Text component with size variants
     - Ensure responsive font sizes
     - _Requirements: 15.4, 28.3_
 
 - [ ] 5. Build molecule components
-  - [~] 5.1 Create ProductCard component
+  - [x] 5.1 Create ProductCard component
     - Display product image, name, and price
     - Implement image hover effect (swap to secondary image)
     - Add Quick View button overlay on hover
@@ -85,7 +85,7 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
     - Preload secondary images
     - Support touch devices (tap and hold)
     - _Requirements: 2.6, 2.7, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7_
-  - [~] 5.2 Create SearchBar component
+  - [-] 5.2 Create SearchBar component
     - Implement search input with debouncing (300ms)
     - Add clear button
     - Style for mobile and desktop
@@ -139,7 +139,7 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
     - Implement smooth fade/slide animation (300-500ms)
     - Pause on hover, resume after 1 second
     - _Requirements: 1.2, 1.6, 1.7, 1.8_
-  - [ ]\* 7.4 Write unit tests for HeroSlideshow
+  - [~] 7.4 Write unit tests for HeroSlideshow
     - Test auto-play timer
     - Test navigation controls
     - Test hover pause/resume
@@ -350,7 +350,7 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
     - Display available shipping methods with costs
     - Update total when shipping method changes
     - _Requirements: 23.4_
-  - [ ]\* 21.4 Write unit tests for checkout validation
+  - [~] 21.4 Write unit tests for checkout validation
     - Test address form validation
     - Test shipping cost calculation
     - _Requirements: 23.4_
@@ -550,7 +550,7 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
     - Remove unused code
     - Optimize bundle size
     - _Requirements: 16.5_
-  - [ ]\* 32.5 Run performance tests
+  - [~] 32.5 Run performance tests
     - Test First Contentful Paint (<1.5s on 4G)
     - Test Largest Contentful Paint (<2.5s on 4G)
     - Achieve Lighthouse score ≥85
@@ -635,7 +635,7 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
     - _Requirements: Design - Monitoring_
 
 - [ ] 37. Final testing and deployment
-  - [ ]\* 37.1 Run end-to-end tests
+  - [~] 37.1 Run end-to-end tests
     - Test complete user flows (browse, add to cart, checkout)
     - Test admin flows (product management, order management)
     - Test on multiple browsers (Chrome, Safari, Firefox)
