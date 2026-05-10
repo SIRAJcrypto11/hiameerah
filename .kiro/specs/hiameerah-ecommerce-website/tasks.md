@@ -60,7 +60,7 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
     - Add validation states and error messages
     - Ensure accessibility with labels and ARIA attributes
     - _Requirements: 18.5_
-  - [-] 4.3 Create Image component
+  - [x] 4.3 Create Image component
     - Wrap Next.js Image with custom styling
     - Implement progressive loading with blur placeholder
     - Add error fallback
@@ -75,7 +75,7 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
     - Ensure responsive font sizes
     - _Requirements: 15.4, 28.3_
 
-- [ ] 5. Build molecule components
+- [x] 5. Build molecule components
   - [x] 5.1 Create ProductCard component
     - Display product image, name, and price
     - Implement image hover effect (swap to secondary image)
@@ -85,23 +85,23 @@ This implementation plan breaks down the Hiameerah e-commerce website into discr
     - Preload secondary images
     - Support touch devices (tap and hold)
     - _Requirements: 2.6, 2.7, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7_
-  - [-] 5.2 Create SearchBar component
+  - [x] 5.2 Create SearchBar component
     - Implement search input with debouncing (300ms)
     - Add clear button
     - Style for mobile and desktop
     - _Requirements: 12.1, 12.2_
-  - [~] 5.3 Create FilterOption component
+  - [x] 5.3 Create FilterOption component
     - Implement checkbox filter option
     - Implement price range slider
     - Add active state styling
     - _Requirements: 5.1, 5.2_
-  - [~] 5.4 Create CartItem component
+  - [x] 5.4 Create CartItem component
     - Display product image, name, size, quantity, price
     - Implement quantity controls (increment/decrement)
     - Add remove button
     - Calculate and display subtotal
     - _Requirements: 10.5, 10.7, 10.8_
-  - [~] 5.5 Create Breadcrumb component
+  - [x] 5.5 Create Breadcrumb component
     - Display navigation path
     - Implement clickable links
     - Style according to brand aesthetic
